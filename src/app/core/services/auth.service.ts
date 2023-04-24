@@ -7,7 +7,8 @@ import { Alumno } from 'src/app/models/alumno';
 })
 export class AuthService {
 
-  private authUser$ = new Subject<Alumno>();
+  private usuarioLogueado: string = ''
+  private authUser$ = new Subject<any>();
 
   constructor() { }
 
@@ -17,6 +18,11 @@ export class AuthService {
 
   login(alumno: Alumno): void {
     this.authUser$.next(alumno);
+  }
+
+  enviarAdrawer(nombre: string): void {
+    this.usuarioLogueado = nombre;
+    this.authUser$.next(this.usuarioLogueado);
   }
 
 }

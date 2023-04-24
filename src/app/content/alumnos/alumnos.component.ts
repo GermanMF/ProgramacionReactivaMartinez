@@ -39,6 +39,7 @@ export class AlumnosComponent {
     const dialog = this.matDialog.open(EditarComponent, {
       data: alumno,
     });
+    dialog.disableClose = true;
     dialog.afterClosed().subscribe((valor) => {
       this.modify(valor);
     });
